@@ -5,4 +5,5 @@ Images hosted on Docker Hub: [megawebmaster/cypress](https://hub.docker.com/r/me
 Name + Tag | Node | Firefox | Chrome | Cypress
 --- | --- | --- | --- | ---
 megawebmaster/cypress:4.4.0 | 13.6.0 | 72.0.2 | 80.0.3987.87 | 4.4.0
+megawebmaster/cypress:4.5.0-1 | 13.6.0 | 72.0.2 | 80.0.3987.87 | 4.5.0
 
