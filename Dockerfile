@@ -4,6 +4,10 @@ FROM cypress/browsers:node13.8.0-chrome81-ff75
 # https://github.com/cypress-io/cypress/issues/1243
 ENV CI=1
 
+# update NPM and Yarn
+# otherwise the base image might have old versions
+RUN npm i -g yarn@latest npm@latest
+
 RUN apt-get install -yq fonts-symbola
 RUN npm config -g set user $(whoami)
 
@@ -19,12 +23,15 @@ RUN cypress verify
 RUN cypress cache path
 RUN cypress cache list
 
+# Link required libraries
+RUN npm link cypress-file-upload
+RUN npm link @babel/core
+RUN npm link @babel/preset-env
+RUN npm link @babel/preset-react
+RUN npm link @babel/plugin-proposal-class-properties
+
 # give every user read access to the "/root" folder where the binary is cached
 # we really only need to worry about the top folder, fortunately
 RUN chmod 755 /root
-
-# always grab the latest NPM and Yarn
-# otherwise the base image might have old versions
-RUN npm i -g yarn@latest npm@latest
 
 ENTRYPOINT ["cypress", "run"]
