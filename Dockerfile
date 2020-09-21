@@ -15,7 +15,6 @@ RUN npm config -g set user $(whoami)
 # see https://on.cypress.io/caching
 ENV CYPRESS_CACHE_FOLDER=/root/.cache/Cypress
 RUN npm install -g "cypress@5.2.0"
-RUN npm install -g "cypress-file-upload@4.1.1"
 RUN cypress verify
 
 # Cypress cache and installed version
@@ -23,8 +22,13 @@ RUN cypress verify
 RUN cypress cache path
 RUN cypress cache list
 
+# Install plugins
+RUN npm install -g "cypress-file-upload@4.1.1"
+RUN npm install -g "cypress-wait-until@1.7.1"
+
 # Link required libraries
 RUN npm link cypress-file-upload
+RUN npm link cypress-wait-until
 RUN npm link @babel/core
 RUN npm link @babel/preset-env
 RUN npm link @babel/preset-react
