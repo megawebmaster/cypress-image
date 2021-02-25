@@ -18,7 +18,7 @@ RUN wget --no-verbose -O /usr/src/google-chrome-stable_current_amd64.deb "http:/
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 # install Firefox browser
-ARG FIREFOX_VERSION=79.0
+ARG FIREFOX_VERSION=86.0
 RUN wget --no-verbose -O /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2 \
   && tar -C /opt -xjf /tmp/firefox.tar.bz2 \
   && rm /tmp/firefox.tar.bz2 \
@@ -49,7 +49,7 @@ RUN npm i -g yarn@latest npm@latest
 # point Cypress at the /root/cache no matter what user account is used
 # see https://on.cypress.io/caching
 ENV CYPRESS_CACHE_FOLDER=/root/.cache/Cypress
-RUN npm install -g "cypress@6.2.0"
+RUN npm install -g "cypress@6.5.0"
 RUN cypress verify
 
 # give every user read access to the "/root" folder where the binary is cached
@@ -57,12 +57,11 @@ RUN cypress verify
 RUN chmod 755 /root
 
 # Install plugins
-RUN npm install -g "cypress-file-upload@4.1.1"
+RUN npm install -g "cypress-file-upload@5.0.2"
 RUN npm install -g "cypress-wait-until@1.7.1"
 
-# Link required libraries
-RUN npm link cypress-file-upload
-RUN npm link cypress-wait-until
+# Link plugins to root filesystem
+RUN ln -s /usr/local/lib/node_modules /node_modules
 
 ENTRYPOINT ["cypress", "run"]
 
