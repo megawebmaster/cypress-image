@@ -1,4 +1,5 @@
-FROM cypress/base:12.18.4
+# TODO: Build an image based on Alpine
+FROM cypress/base:14.18.1
 
 USER root
 
@@ -49,7 +50,7 @@ RUN npm i -g yarn@latest npm@latest
 # point Cypress at the /root/cache no matter what user account is used
 # see https://on.cypress.io/caching
 ENV CYPRESS_CACHE_FOLDER=/root/.cache/Cypress
-RUN CYPRESS_INSTALL_BINARY=7.4.0 npm install -g "cypress@7.4.0" "cypress-file-upload@5.0.2" "cypress-wait-until@1.7.1"
+RUN CYPRESS_INSTALL_BINARY=9.5.1 npm install -g "cypress@9.5.1" "cypress-wait-until@1.7.1"
 
 # give every user read access to the "/root" folder where the binary is cached
 # we really only need to worry about the top folder, fortunately
