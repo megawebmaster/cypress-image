@@ -17,4 +17,5 @@ megawebmaster/cypress:6.7.0-1 | 12.18.4 | 88.0.1  | 90.0.4430.93  | 6.7.0   | cy
 megawebmaster/cypress:7.4.0-1 | 12.18.4 | 88.0.1  | 90.0.4430.93  | 7.4.0   | cypress-file-upload@5.0.2, cypress-wait-until@1.7.1
 megawebmaster/cypress:9.5.1-1 | 14.18.1 | 88.0.1  | 90.0.4430.93  | 9.5.1   | cypress-wait-until@1.7.1
 megawebmaster/cypress:9.6.1-1 | 14.18.1 | 88.0.1  | 90.0.4430.93  | 9.6.1   | cypress-wait-until@1.7.2
+megawebmaster/cypress:9.7.0-1 | 14.18.1 | 88.0.1  | 90.0.4430.93  | 9.7.0   | cypress-wait-until@1.7.2
 
